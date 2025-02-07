@@ -1,48 +1,32 @@
-# Python program for simple calculator
+def calculate(n1, n2, op):
+    if op == '+':
+        result = n1 + n2
+    elif op == '-':
+        result = n1 - n2
+    elif op == '*':
+        result = n1 * n2
+    elif op == '/':
+        result = n1 / n2
+    elif op == '^':
+        result = n1 ** n2
+    else:
+        raise ValueError('Invalid operator')
 
-# Function to add two numbers
-def add(num1, num2):
-    return num1 + num2
+    if result.is_integer():
+        result = int(result)
 
-# Function to subtract two numbers
-def subtract(num1, num2):
-    return num1 - num2
-
-# Function to multiply two numbers
-def multiply(num1, num2):
-    return num1 * num2
-
-# Function to divide two numbers
-def divide(num1, num2):
-    return num1 / num2
-
-print("Please select operation -\n" \
-        "1. Add\n" \
-        "2. Subtract\n" \
-        "3. Multiply\n" \
-        "4. Divide\n")
+    return result
 
 
-# Take input from the user
-select = int(input("Select operations form 1, 2, 3, 4 :"))
+continue_calculating = True
+while continue_calculating is True:
+    number1 = float(input('Enter first number: '))
+    op = input('Enter operator (+,-,*,/,^): ')
+    number2 = float(input('Enter second number: '))
+    print(number1, op, number2)
+    result = calculate(number1, number2, op)
+    print('=', result)
+    yes_or_no = input('Continue? (y/n): ')
+    if yes_or_no == 'n':
+        continue_calculating = False
 
-number_1 = int(input("Enter first number: "))
-number_2 = int(input("Enter second number: "))
-
-if select == 1:
-    print(number_1, "+", number_2, "=",
-                    add(number_1, number_2))
-
-elif select == 2:
-    print(number_1, "-", number_2, "=",
-                    subtract(number_1, number_2))
-
-elif select == 3:
-    print(number_1, "*", number_2, "=",
-                    multiply(number_1, number_2))
-
-elif select == 4:
-    print(number_1, "/", number_2, "=",
-                    divide(number_1, number_2))
-else:
-    print("Invalid input")
